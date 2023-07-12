@@ -1,0 +1,26 @@
+{% extends "master.html" %}
+
+{% block title %}
+Lista de productos
+{% endblock %}
+
+
+{% block content %}
+{% for producto in productos %}
+<div>
+    <h3>{{ producto.nombre }}</h3>
+    <p>{{ producto.descripcion }}</p>
+    <p>Precio: {{ producto.precio }}</p>
+    <p>Categoría: {{ producto.categoria.nombre }}</p>
+    <!--
+    <a href="{% url 'detalle_producto' producto.id %}">Ver detalles</a>
+    <form action="{% url 'agregar_al_carrito' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="producto_id" value="{{ producto.id }}">
+        <input type="number" name="cantidad" value="1">
+        <input type="submit" value="Agregar al carrito">
+    </form>
+    -->
+</div>
+{% endfor %}
+{% endblock %}
